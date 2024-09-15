@@ -1,62 +1,65 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 800,
-    "height": 400,
-    "data": {
-      "url": "https://raw.githubusercontent.com/vega/vega-datasets/master/data/world-110m.json",
-      "format": {
-        "type": "topojson",
-        "feature": "countries"
-      }
-    },
-    "projection": {
-      "type": "mercator"
-    },
-    "layer": [
-      {
-        "mark": {
-          "type": "geoshape",
-          "fill": "lightgray",
-          "stroke": "white"
-        },
-        "encoding": {
-          "shape": {
-            "field": "geometry"
-          }
-        }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json",
+    "format": {
+      "type": "topojson",
+      "feature": "countries1"
+    }
+  },
+  "projection": {
+    "type": "mercator"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "geoshape",
+        "fill": "lightgray",
+        "stroke": "white"
       },
-      {
-        "data": {
-          "url": "https://raw.githubusercontent.com/bdan0005/3179-DataVis2/main/crude-birth-rate.csv"
-        },
-        "mark": "circle",
-        "encoding": {
-          "longitude": {
-            "field": "lon",
-            "type": "quantitative"
-          },
-          "latitude": {
-            "field": "lat",
-            "type": "quantitative"
-          },
-          "size": {
-            "field": "pop",
-            "type": "quantitative",
-            "scale": {
-              "type": "sqrt",  
-              "range": [0, 1000]
-            }
-          },
-          "color": {
-            "value": "steelblue"
-          },
-          "tooltip": [
-            {"field": "city", "type": "nominal", "title": "City"},
-            {"field": "pop", "type": "quantitative", "title": "Population"}
-          ]
+      "encoding": {
+        "shape": {
+          "field": "geometry"
         }
       }
-    ]
-  }
-  
-    
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/bdan0005/3179-DataVis2/main/crude-birth-rate.csv"
+      },
+      "mark": {
+        "type": "circle",
+        "opacity": 0.6,
+        "stroke": "black",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "longitude": {
+          "field": "Longitude",
+          "type": "quantitative"
+        },
+        "latitude": {
+          "field": "Latitude",
+          "type": "quantitative"
+        },
+        "size": {
+          "field": "BirthRate",
+          "type": "quantitative",
+          "scale": {
+            "type": "sqrt",
+            "range": [0, 1000]
+          }
+        },
+        "color": {
+          "value": "steelblue"
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal", "title": "Country"},
+          {"field": "BirthRate", "type": "quantitative", "title": "Birth Rate"}
+        ]
+      }
+    }
+  ]
+}
