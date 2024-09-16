@@ -33,7 +33,11 @@
       "type": "quantitative",
       "scale": {"scheme": "viridis"},
       "title": "Crude Birth Rate"
-    }
+    },
+    "tooltip": [
+      {"field": "properties.NAME", "type": "nominal", "title": "Country"},
+      {"field": "BirthRate", "type": "quantitative", "title": "Birth Rate (%)"}
+    ]
   },
   "projection": {"type": "equalEarth"},
   "background": "white"
